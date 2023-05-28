@@ -6,8 +6,9 @@
 //
 
 import UIKit
-
-class CellView: UITableViewCell {
+#warning("TODOO: Code review")
+// Use xib
+class CellView: UITableViewCell { // UserTableViewCell
 
     @IBOutlet weak var userID: UILabel!
     @IBOutlet weak var userName: UILabel!
@@ -26,6 +27,7 @@ class CellView: UITableViewCell {
         self.email.text = cellData.getEmail()
     }
 
+    // No need
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

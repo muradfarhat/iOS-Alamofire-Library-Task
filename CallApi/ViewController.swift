@@ -7,14 +7,17 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+#warning("TODOO: Code review")
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate { // UsersViewController
 
     @IBOutlet weak var tableView: UITableView!
-    var tableViewModel: TableViewModel = TableViewModel()
+    var tableViewModel: TableViewModel = TableViewModel() // UsersViewModel class name
+    // Parameter name viewModel
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        // remove these lines use storyboard
         tableView.dataSource = self
         tableView.delegate = self
         

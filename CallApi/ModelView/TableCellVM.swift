@@ -7,7 +7,8 @@
 
 import Foundation
 
-class CellViewModel {
+#warning("TODOO: Code review")
+class CellViewModel { // UserTableViewModel
     private var id: Int
     private var name: String
     private var userName: String
