@@ -8,7 +8,7 @@
 import Foundation
 
 #warning("TODOO: Code review")
-class CellViewModel { // UserTableViewModel
+class UserTableCellViewModel { // UserTableCellViewModel
     private var id: Int
     private var name: String
     private var userName: String
@@ -17,7 +17,7 @@ class CellViewModel { // UserTableViewModel
     init(userData: UserModel) {
         self.id = userData.id
         self.name = userData.name
-        self.userName = userData.username
+        self.userName = userData.userName
         self.email = userData.email
     }
     

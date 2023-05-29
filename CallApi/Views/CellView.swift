@@ -8,7 +8,7 @@
 import UIKit
 #warning("TODOO: Code review")
 // Use xib
-class CellView: UITableViewCell { // UserTableViewCell
+class UserTableViewCell: UITableViewCell { // UserTableViewCell
 
     @IBOutlet weak var userID: UILabel!
     @IBOutlet weak var userName: UILabel!
@@ -20,18 +20,10 @@ class CellView: UITableViewCell { // UserTableViewCell
         // Initialization code
     }
     
-    func setCellData(cellData: CellViewModel) {
+    func setCellData(cellData: UserTableCellViewModel) {
         self.userID.text = String(cellData.getID())
         self.userName.text = cellData.getUserName()
         self.name.text = cellData.getName()
         self.email.text = cellData.getEmail()
     }
-
-    // No need
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
 }
