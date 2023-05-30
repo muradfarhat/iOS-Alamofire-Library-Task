@@ -1,19 +1,18 @@
 //
-//  CellView.swift
+//  TableViewCellXib.swift
 //  CallApi
 //
-//  Created by Murad Farhat on 25/05/2023.
+//  Created by Murad Farhat on 30/05/2023.
 //
 
 import UIKit
-#warning("TODOO: Code review")
-// Use xib
-class UserTableViewCell: UITableViewCell { // UserTableViewCell
 
-    @IBOutlet weak var userID: UILabel!
+class UserTableViewCellXib: UITableViewCell {
+
+    @IBOutlet weak var userEmail: UILabel!
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var name: UILabel!
-    @IBOutlet weak var email: UILabel!
+    @IBOutlet weak var userID: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,6 +23,7 @@ class UserTableViewCell: UITableViewCell { // UserTableViewCell
         self.userID.text = String(cellData.getID())
         self.userName.text = cellData.getUserName()
         self.name.text = cellData.getName()
-        self.email.text = cellData.getEmail()
+        self.userEmail.text = cellData.getEmail()
     }
+    
 }

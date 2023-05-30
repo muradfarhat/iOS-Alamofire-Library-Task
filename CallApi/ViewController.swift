@@ -7,18 +7,21 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+#warning("TODOO: Code review")
+class UsersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate { // UsersViewController
 
     @IBOutlet weak var tableView: UITableView!
-    var tableViewModel: TableViewModel = TableViewModel()
+    var usersViewModel: UsersTableViewModel = UsersTableViewModel() // UsersViewModel class name
+    let userTableViewCellID = "UserTableViewCell"
+    // Parameter name viewModel
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        tableView.dataSource = self
-        tableView.delegate = self
         
-        tableViewModel.getData {
+        tableView.register(UINib(nibName: userTableViewCellID, bundle: nil), forCellReuseIdentifier: userTableViewCellID)
+    
+        usersViewModel.getData {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
@@ -26,14 +29,18 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.tableViewModel.numOfUsers()
+        return self.usersViewModel.numOfUsers()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "userCell") as? CellView
-        let user = tableViewModel.getCellForRow(cellIndex: indexPath.row)
+        let cell = tableView.dequeueReusableCell(withIdentifier: userTableViewCellID) as? UserTableViewCellXib
+        let user = usersViewModel.getCellForRow(cellIndex: indexPath.row)
         
-        let cellVM = CellViewModel(userData: user)
+        let cellVM = UserTableCellViewModel(userData: user)
         cell?.setCellData(cellData: cellVM)
         return cell ?? UITableViewCell()
     }
