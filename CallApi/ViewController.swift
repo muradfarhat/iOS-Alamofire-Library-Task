@@ -12,12 +12,15 @@ class UsersViewController: UIViewController, UITableViewDataSource, UITableViewD
 
     @IBOutlet weak var tableView: UITableView!
     var usersViewModel: UsersTableViewModel = UsersTableViewModel() // UsersViewModel class name
+    let userTableViewCellID = "UserTableViewCell"
     // Parameter name viewModel
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        tableView.register(UINib(nibName: userTableViewCellID, bundle: nil), forCellReuseIdentifier: userTableViewCellID)
+    
         usersViewModel.getData {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -29,8 +32,12 @@ class UsersViewController: UIViewController, UITableViewDataSource, UITableViewD
         return self.usersViewModel.numOfUsers()
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "userCell") as? UserTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: userTableViewCellID) as? UserTableViewCellXib
         let user = usersViewModel.getCellForRow(cellIndex: indexPath.row)
         
         let cellVM = UserTableCellViewModel(userData: user)

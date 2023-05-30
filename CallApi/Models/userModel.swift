@@ -26,19 +26,21 @@ struct UserModel: Codable { // Codable
         var geo: UserGeo
         
         struct UserGeo: Codable {
-            var lat: Double
-            var lng: Double
-            
-            enum CodingKeys: String, CodingKey {
-                case lat, lng
-            }
-            
-            init(from decoder: Decoder) throws {
-                let container = try decoder.container(keyedBy: CodingKeys.self)
-                lat = try container.decode(Double.self, forKey: .lat)
-                lng = try container.decode(Double.self, forKey: .lng)
-                
-            }
+            var lat: String
+            var lng: String
+//            var lat: Double
+//            var lng: Double
+//
+//            enum CodingKeys: String, CodingKey {
+//                case lat, lng
+//            }
+//            
+//            init(from decoder: Decoder) throws {
+//                let container = try decoder.container(keyedBy: CodingKeys.self)
+//                lat = try container.decode(Double.self, forKey: .lat)
+//                lng = try container.decode(Double.self, forKey: .lng)
+//
+//            }
         }
         
         enum CodingKeys: String, CodingKey {
