@@ -9,10 +9,10 @@ import Foundation
 
 #warning("TODOO: Code review")
 class UserTableCellViewModel { // UserTableCellViewModel
-    private var id: Int
-    private var name: String
-    private var userName: String
-    private var email: String
+    private(set) var id: Int
+    private(set) var name: String
+    private(set) var userName: String
+    private(set) var email: String
     
     init(userData: UserModel) {
         self.id = userData.id
@@ -24,15 +24,15 @@ class UserTableCellViewModel { // UserTableCellViewModel
     func getID() -> Int {
         return self.id
     }
-    
+
     func getName() -> String {
         return self.name
     }
-    
+
     func getUserName() -> String {
         return self.userName
     }
-    
+
     func getEmail() -> String {
         return self.email
     }

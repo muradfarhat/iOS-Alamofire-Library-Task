@@ -19,7 +19,7 @@ class UsersViewController: UIViewController, UITableViewDataSource, UITableViewD
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        tableView.register(UINib(nibName: userTableViewCellID, bundle: nil), forCellReuseIdentifier: userTableViewCellID)
+        tableView.register(UINib(nibName: userTableViewCellID, bundle: .main), forCellReuseIdentifier: userTableViewCellID)
     
         usersViewModel.getData {
             DispatchQueue.main.async {

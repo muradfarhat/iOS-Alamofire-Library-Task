@@ -15,21 +15,17 @@ class UsersTableViewModel {
     func getData(completionHandler: @escaping () -> Void) {
         // Handle failure
         // Handle strong self
-        AF.request("https://jsonplaceholder.typicode.com/users").responseDecodable(of: [UserModel].self) { [weak self] response in
-//            guard let responseData = response.value else {
-//                completionHandler()
-//                return
-//            }
-//            self?.userData = responseData
-//            completionHandler()
+        let userApi = "https://jsonplaceholder.typicode.com/users"
+        
+        AF.request(userApi).responseDecodable(of: [UserModel].self) { [weak self] response in
             
             switch response.result {
                 case .success(let responseData):
-                    self?.userData = responseData
-                    completionHandler()
+                        self?.userData = responseData
+                        completionHandler()
                 case .failure(let error):
-                    print("Error :\(error)")
-                    completionHandler()
+                        print("Error :\(error)")
+                        completionHandler()
             }
         }
     }
@@ -42,3 +38,29 @@ class UsersTableViewModel {
         return self.userData[cellIndex]
     }
 }
+
+
+/*
+
+if let apiData = UserDefaults.standard.object(forKey: userApi) as? Data {
+            if let decodedData = try? JSONDecoder().decode([UserModel].self, from: apiData) {
+                self.userData = decodedData
+                print(self.userData)
+            }
+            completionHandler()
+        } else {
+            AF.request(userApi).responseDecodable(of: [UserModel].self) { [weak self] response in
+
+                switch response.result {
+                    case .success(let responseData):
+                        self?.userData = responseData
+                        if let encodedData = try? JSONEncoder().encode(responseData){
+                            UserDefaults.standard.set(encodedData, forKey: userApi)
+                        }
+                        completionHandler()
+                    case .failure(let error):
+                        print("Error :\(error)")
+                        completionHandler()
+                }
+            }
+*/

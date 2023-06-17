@@ -9,10 +9,10 @@ import UIKit
 
 class UserTableViewCellXib: UITableViewCell {
 
-    @IBOutlet weak var userEmail: UILabel!
-    @IBOutlet weak var userName: UILabel!
-    @IBOutlet weak var name: UILabel!
-    @IBOutlet weak var userID: UILabel!
+    @IBOutlet private weak var userEmail: UILabel!
+    @IBOutlet private weak var userName: UILabel!
+    @IBOutlet private weak var name: UILabel!
+    @IBOutlet private weak var userID: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -20,10 +20,10 @@ class UserTableViewCellXib: UITableViewCell {
     }
     
     func setCellData(cellData: UserTableCellViewModel) {
-        self.userID.text = String(cellData.getID())
-        self.userName.text = cellData.getUserName()
-        self.name.text = cellData.getName()
-        self.userEmail.text = cellData.getEmail()
+        self.userID.text = String(cellData.id)
+        self.userName.text = cellData.userName
+        self.name.text = cellData.name
+        self.userEmail.text = cellData.email
     }
     
 }
